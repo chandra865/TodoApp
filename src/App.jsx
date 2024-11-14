@@ -6,14 +6,13 @@ import sampleTasks from './sampleTasks';
 function App() {
   // Initialize tasks from localStorage or fallback to sampleTasks
 
-  const [tasks, setTasks] = useState(sampleTasks);
-  // const [tasks, setTasks] = useState(() => {
-  //   const storedTasks = JSON.parse(localStorage.getItem('tasks'));
-  //   return storedTasks // If no tasks in localStorage, use sampleTasks
-  // });
+  //const [tasks, setTasks] = useState(sampleTasks);
+  const [tasks, setTasks] = useState(() => {
+    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+    return storedTasks;
+  });
   const [selectedTask, setSelectedTask] = useState(null);
 
-  // Save tasks to localStorage whenever tasks change
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);

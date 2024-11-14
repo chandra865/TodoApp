@@ -8,7 +8,6 @@ The Task Management Application is a simple, intuitive tool designed to help use
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Installation](#installation)
-
 ## Features
 * Task Creation: Add new tasks with due dates and priorities.
 * Edit and Delete Tasks: Update or remove existing tasks as needed.
@@ -48,10 +47,3 @@ Make sure you have the following installed:
     ```bash
     npm run dev
 
-<<<<<<< HEAD
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
->>>>>>> e25bc73 (first commit)
-
-=======
->>>>>>> b7a8fdbf955de4c0c562fb4b4c13003da6b9cb30
