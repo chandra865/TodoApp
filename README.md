@@ -47,3 +47,9 @@ Make sure you have the following installed:
     ```bash
     npm run dev
 
+<<<<<<< HEAD
+=======
+# Demo
+![image alt](https://github.com/chandra865/TodoApp/blob/main/s1todo.PNG)
+![image alt](https://github.com/chandra865/TodoApp/blob/main/s2todo.PNG)
+>>>>>>> 29f8b810ed2e3e8a594cc6ec76b1cba3ab24c1f2
