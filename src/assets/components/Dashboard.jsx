@@ -39,7 +39,7 @@
 
 // export default Dashboard;
 
-import React, { useState } from "react";
+import React, { useState, useTransition } from "react";
 import TaskList from "./TaskList";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
@@ -51,7 +51,11 @@ const Dashboard = ({ tasks, deleteTask, setSelectedTask, toggleComplete }) => {
   const [isUpcomingOpen, setIsUpcomingOpen] = useState(true);
   const [isOverdueOpen, setIsOverdueOpen] = useState(true);
   const [isCompletedOpen, setIsCompletedOpen] = useState(true);
+  
+  // Set up the useTransition hook for non-blocking state updates
+  const [isPending, startTransition] = useTransition();
 
+  // Function to filter tasks with transition
   const filteredTasks = tasks.filter((task) => {
     const isSearchMatch = task.title.toLowerCase().includes(search.toLowerCase());
     const isPriorityMatch = filterPriority ? task.priority === filterPriority : true;
@@ -78,11 +82,11 @@ const Dashboard = ({ tasks, deleteTask, setSelectedTask, toggleComplete }) => {
           type="text"
           placeholder="Search..."
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => startTransition(() => setSearch(e.target.value))}
           className="p-2 flex-grow shadow-sm shadow-black rounded"
         />
         <select
-          onChange={(e) => setFilterPriority(e.target.value)}
+          onChange={(e) => startTransition(() => setFilterPriority(e.target.value))}
           className="p-2 shadow-sm shadow-black rounded"
         >
           <option value="">All Priorities</option>
@@ -91,7 +95,7 @@ const Dashboard = ({ tasks, deleteTask, setSelectedTask, toggleComplete }) => {
           <option value="Low">Low</option>
         </select>
         <select
-          onChange={(e) => setFilterCompletion(e.target.value)}
+          onChange={(e) => startTransition(() => setFilterCompletion(e.target.value))}
           className="p-2 shadow-sm shadow-black rounded"
         >
           <option value="">All Statuses</option>
@@ -104,7 +108,7 @@ const Dashboard = ({ tasks, deleteTask, setSelectedTask, toggleComplete }) => {
       <div className="mb-3 border rounded">
         <div
           className="flex justify-between items-center bg-gray-200 p-3 cursor-pointer shadow-sm shadow-black"
-          onClick={() => setIsUpcomingOpen(!isUpcomingOpen)}
+          onClick={() => startTransition(() => setIsUpcomingOpen(!isUpcomingOpen))}
         >
           <h2 className="text-xl font-bold">
             Upcoming Tasks ({upcomingTasks.length})
@@ -127,7 +131,7 @@ const Dashboard = ({ tasks, deleteTask, setSelectedTask, toggleComplete }) => {
       <div className="mb-3 border rounded">
         <div
           className="flex justify-between items-center bg-gray-200 p-3 cursor-pointer shadow-sm shadow-black"
-          onClick={() => setIsOverdueOpen(!isOverdueOpen)}
+          onClick={() => startTransition(() => setIsOverdueOpen(!isOverdueOpen))}
         >
           <h2 className="text-xl font-bold">
             Overdue Tasks ({overdueTasks.length})
@@ -150,7 +154,7 @@ const Dashboard = ({ tasks, deleteTask, setSelectedTask, toggleComplete }) => {
       <div className="mb-4 border rounded">
         <div
           className="flex justify-between items-center bg-gray-200 p-3 cursor-pointer shadow-sm shadow-black"
-          onClick={() => setIsCompletedOpen(!isCompletedOpen)}
+          onClick={() => startTransition(() => setIsCompletedOpen(!isCompletedOpen))}
         >
           <h2 className="text-xl font-bold">
             Completed Tasks ({completedTasks.length})
