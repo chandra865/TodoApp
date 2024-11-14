@@ -48,10 +48,6 @@ Make sure you have the following installed:
     ```bash
     npm run dev
 
-<<<<<<< HEAD
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
->>>>>>> e25bc73 (first commit)
-
-=======
->>>>>>> b7a8fdbf955de4c0c562fb4b4c13003da6b9cb30
+# Demo
+![image alt](https://github.com/chandra865/TodoApp/blob/main/s1todo.PNG)
+![image alt](https://github.com/chandra865/TodoApp/blob/main/s2todo.PNG)
